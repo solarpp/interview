@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_QnqsIIFQEeS9cY_UluZW3w" name="Collections">
+  <packagedElement xmi:type="uml:Class" xmi:id="_V6CksIFQEeS9cY_UluZW3w" name="Object"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_nzSeMIFQEeS9cY_UluZW3w" name="AbstractCollection&lt;E>">
+    <generalization xmi:id="_q0BrUIFQEeS9cY_UluZW3w" general="_V6CksIFQEeS9cY_UluZW3w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_ux4oAIFQEeS9cY_UluZW3w" name="AbstractList&lt;E>">
+    <generalization xmi:id="_xDbz4IFQEeS9cY_UluZW3w" general="_nzSeMIFQEeS9cY_UluZW3w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_03NngIFQEeS9cY_UluZW3w" name="AbstractQueue">
+    <generalization xmi:id="_2oO5MIFQEeS9cY_UluZW3w" general="_nzSeMIFQEeS9cY_UluZW3w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_3NDdgIFQEeS9cY_UluZW3w" name="AbstractSet">
+    <generalization xmi:id="_6cAs0IFQEeS9cY_UluZW3w" general="_nzSeMIFQEeS9cY_UluZW3w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Mv4s0IFREeS9cY_UluZW3w" name="ArrayDeque">
+    <generalization xmi:id="_P_kU4IFREeS9cY_UluZW3w" general="_nzSeMIFQEeS9cY_UluZW3w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_cQpE8IFREeS9cY_UluZW3w" name="AbstractSequentialList">
+    <generalization xmi:id="_iIMuMIFREeS9cY_UluZW3w" general="_ux4oAIFQEeS9cY_UluZW3w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_iwDYYIFREeS9cY_UluZW3w" name="ArrayList">
+    <generalization xmi:id="_kkULUIFREeS9cY_UluZW3w" general="_ux4oAIFQEeS9cY_UluZW3w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_lBlWIIFREeS9cY_UluZW3w" name="Vector">
+    <generalization xmi:id="_mcw6sIFREeS9cY_UluZW3w" general="_ux4oAIFQEeS9cY_UluZW3w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_7H7iMIFREeS9cY_UluZW3w" name="AbstractMap&lt;K,V>">
+    <generalization xmi:id="_9WrRsIFREeS9cY_UluZW3w" general="_V6CksIFQEeS9cY_UluZW3w"/>
+  </packagedElement>
+</uml:Model>
