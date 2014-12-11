@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_qHGQsIFMEeSi2tn_1AqYUA" selectedViews="_qSWecIFMEeSi2tn_1AqYUA _qSpZYIFMEeSi2tn_1AqYUA _qSqAcIFMEeSi2tn_1AqYUA _qSwHEIFMEeSi2tn_1AqYUA _qWySgIFMEeSi2tn_1AqYUA" version="8.1.1">
   <models xmi:type="viewpoint:DAnalysis" href="#_qHGQsIFMEeSi2tn_1AqYUA"/>
-  <models xmi:type="uml:Model" href="UML/CsharpCollections#_9a1q4IFPEeS9cY_UluZW3w"/>
   <models xmi:type="uml:Model" href="UML/javacollections.uml#_QnqsIIFQEeS9cY_UluZW3w"/>
+  <models xmi:type="uml:Model" href="UML/CsharpCollections.uml#_9a1q4IFPEeS9cY_UluZW3w"/>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_qSWecIFMEeSi2tn_1AqYUA" initialized="true">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='Capture']"/>
   </ownedViews>
