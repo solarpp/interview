@@ -3,7 +3,7 @@
 <suite name="Suite" parallel="none">
   <test name="Test">
     <classes>
-      <class name="peng.practice.interview.AppTest"/>
+      <class name="peng.practice.interview.StackTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
