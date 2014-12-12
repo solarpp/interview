@@ -7,25 +7,70 @@
   <packagedElement xmi:type="uml:Class" xmi:id="_ux4oAIFQEeS9cY_UluZW3w" name="AbstractList&lt;E>">
     <generalization xmi:id="_xDbz4IFQEeS9cY_UluZW3w" general="_nzSeMIFQEeS9cY_UluZW3w"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_03NngIFQEeS9cY_UluZW3w" name="AbstractQueue">
+  <packagedElement xmi:type="uml:Class" xmi:id="_03NngIFQEeS9cY_UluZW3w" name="AbstractQueue&lt;E>">
     <generalization xmi:id="_2oO5MIFQEeS9cY_UluZW3w" general="_nzSeMIFQEeS9cY_UluZW3w"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_3NDdgIFQEeS9cY_UluZW3w" name="AbstractSet">
+  <packagedElement xmi:type="uml:Class" xmi:id="_3NDdgIFQEeS9cY_UluZW3w" name="AbstractSet&lt;E>">
     <generalization xmi:id="_6cAs0IFQEeS9cY_UluZW3w" general="_nzSeMIFQEeS9cY_UluZW3w"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_Mv4s0IFREeS9cY_UluZW3w" name="ArrayDeque">
+  <packagedElement xmi:type="uml:Class" xmi:id="_Mv4s0IFREeS9cY_UluZW3w" name="ArrayDeque&lt;E>">
     <generalization xmi:id="_P_kU4IFREeS9cY_UluZW3w" general="_nzSeMIFQEeS9cY_UluZW3w"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_cQpE8IFREeS9cY_UluZW3w" name="AbstractSequentialList">
+  <packagedElement xmi:type="uml:Class" xmi:id="_cQpE8IFREeS9cY_UluZW3w" name="AbstractSequentialList&lt;E>">
     <generalization xmi:id="_iIMuMIFREeS9cY_UluZW3w" general="_ux4oAIFQEeS9cY_UluZW3w"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_iwDYYIFREeS9cY_UluZW3w" name="ArrayList">
+  <packagedElement xmi:type="uml:Class" xmi:id="_iwDYYIFREeS9cY_UluZW3w" name="ArrayList&lt;E>">
     <generalization xmi:id="_kkULUIFREeS9cY_UluZW3w" general="_ux4oAIFQEeS9cY_UluZW3w"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_lBlWIIFREeS9cY_UluZW3w" name="Vector">
+  <packagedElement xmi:type="uml:Class" xmi:id="_lBlWIIFREeS9cY_UluZW3w" name="Vector&lt;E>">
     <generalization xmi:id="_mcw6sIFREeS9cY_UluZW3w" general="_ux4oAIFQEeS9cY_UluZW3w"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_7H7iMIFREeS9cY_UluZW3w" name="AbstractMap&lt;K,V>">
     <generalization xmi:id="_9WrRsIFREeS9cY_UluZW3w" general="_V6CksIFQEeS9cY_UluZW3w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_G1kycIG9EeST791z3qjMMg" name="Array">
+    <generalization xmi:id="_IPImYIG9EeST791z3qjMMg" general="_V6CksIFQEeS9cY_UluZW3w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_SWnMsIG9EeST791z3qjMMg" name="Collections">
+    <generalization xmi:id="_TlgowIG9EeST791z3qjMMg" general="_V6CksIFQEeS9cY_UluZW3w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Y1bqQIG9EeST791z3qjMMg" name="Dictionary&lt;K,V>">
+    <generalization xmi:id="_ct7l0IG9EeST791z3qjMMg" general="_V6CksIFQEeS9cY_UluZW3w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_gMdiMIG9EeST791z3qjMMg" name="EnumMap&lt;K extends Enum&lt;K>,V>">
+    <generalization xmi:id="_pMOSgIG9EeST791z3qjMMg" general="_7H7iMIFREeS9cY_UluZW3w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_td-bkIG9EeST791z3qjMMg" name="EnumSet&lt;E extends Enum&lt;E>>">
+    <generalization xmi:id="_ugOiwIG9EeST791z3qjMMg" general="_3NDdgIFQEeS9cY_UluZW3w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_32-2wIG9EeST791z3qjMMg" name="HashMap&lt;K,V>">
+    <generalization xmi:id="_4ud4YIG9EeST791z3qjMMg" general="_7H7iMIFREeS9cY_UluZW3w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_D2hK4IG-EeST791z3qjMMg" name="HashSet&lt;E>">
+    <generalization xmi:id="_Gtk3kIG-EeST791z3qjMMg" general="_3NDdgIFQEeS9cY_UluZW3w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_cEtNMIG-EeST791z3qjMMg" name="Hashtable&lt;K,V>">
+    <generalization xmi:id="_dTtW8IG-EeST791z3qjMMg" general="_Y1bqQIG9EeST791z3qjMMg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_pUK4IIG-EeST791z3qjMMg" name="LinkedHashMap&lt;K,V>">
+    <generalization xmi:id="_qPuhcIG-EeST791z3qjMMg" general="_32-2wIG9EeST791z3qjMMg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_uxL6cIG-EeST791z3qjMMg" name="LinkedHashSet&lt;E>">
+    <generalization xmi:id="_xTgGMIG-EeST791z3qjMMg" general="_D2hK4IG-EeST791z3qjMMg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_3T6wgIG-EeST791z3qjMMg" name="LinkedList&lt;E>">
+    <generalization xmi:id="_4QqsoIG-EeST791z3qjMMg" general="_cQpE8IFREeS9cY_UluZW3w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_-7Q8YIG-EeST791z3qjMMg" name="Stack&lt;E>">
+    <generalization xmi:id="_AdT98IG_EeST791z3qjMMg" general="_lBlWIIFREeS9cY_UluZW3w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_GkuoIIG_EeST791z3qjMMg" name="TreeMap&lt;K,V>">
+    <generalization xmi:id="_Hiw9sIG_EeST791z3qjMMg" general="_7H7iMIFREeS9cY_UluZW3w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_RzFW8IG_EeST791z3qjMMg" name="TreeSet&lt;E>">
+    <generalization xmi:id="_WyG1sIG_EeST791z3qjMMg" general="_3NDdgIFQEeS9cY_UluZW3w"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_c-pQcIG_EeST791z3qjMMg" name="WeakHashMap&lt;K,V>">
+    <generalization xmi:id="_eI4O8IG_EeST791z3qjMMg" general="_7H7iMIFREeS9cY_UluZW3w"/>
   </packagedElement>
 </uml:Model>
