@@ -13,10 +13,8 @@ public class StackTest {
 		Node n2 = new Node(5);
 		s.push(n1);
 		s.push(n2);
-		System.out.println(s.peek().value);
 		Assert.assertEquals(5, s.peek().value);
 		s.pop();
-		System.out.println(s.peek().value);
 		Assert.assertEquals(3, s.peek().value);
 	}
 }
