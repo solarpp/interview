@@ -2,14 +2,14 @@ package peng.practice.interview;
 
 import java.util.List;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
+import static org.testng.Assert.assertEquals;
 
 public class LeetCodeTest {
 
 	@Test
-	public void permute() {
-		int[] num = { 1, 2, 3, 4};
+	public void testPermute() {
+		int[] num = { 1, 2, 3, 4 };
 		List<List<Integer>> result = LeetCode.permute(num);
 		for (List<Integer> list : result) {
 			for (int a : list) {
@@ -17,6 +17,27 @@ public class LeetCodeTest {
 			}
 			System.out.println();
 		}
-		Assert.assertEquals(result.size(), 24, "should have 4!=4*3*2*1=24 permutations.");
+		assertEquals(result.size(), 24,
+				"should have 4!=4*3*2*1=24 permutations.");
+	}
+
+	@Test
+	public void testInsertionSortList() {
+		// prepare test data
+		Node n1 = new Node(2);
+		Node n2 = new Node(3);
+		Node n3 = new Node(4);
+		Node n4 = new Node(1);
+		n1.next = n2;
+		n2.next = n3;
+		n3.next = n4;
+		n4.next = null;
+
+		// verify insertion method
+		Node head = LeetCode.insertionSortList(n1);
+		assertEquals(head.value, 1);
+		assertEquals(head.next.value, 2);
+		assertEquals(head.next.next.value, 3);
+		assertEquals(head.next.next.next.value, 4);
 	}
 }

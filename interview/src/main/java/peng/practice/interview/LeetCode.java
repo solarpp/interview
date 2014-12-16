@@ -8,8 +8,52 @@ public class LeetCode {
 	// https://oj.leetcode.com/problems/permutations/
 	public static List<List<Integer>> permute(int[] num) {
 		List<List<Integer>> result = new ArrayList<List<Integer>>();
+		if (num.length == 0)
+			return null;
+		if (num.length == 1) {
+			List<Integer> current = new ArrayList<Integer>();
+			current.add(num[0]);
+			result.add(current);
+			return result;
+		}
 		doPermute(result, num, 0);
 		return result;
+	}
+
+	// https://oj.leetcode.com/problems/insertion-sort-list/
+	public static Node insertionSortList(Node head) {
+		if (head == null)
+			return null;
+		if (head.next == null)
+			return head;
+		Node h = head;
+		Node t = head;
+		Node up = head;
+		Node down = head;
+		Node now = head.next;
+		while (now != null) {
+			if (h.value > now.value) {
+				t.next = now.next;
+				now.next = h;
+				h = now;
+			} else {
+				up = h;
+				down = h;
+				while (down.value < now.value && down != now) {
+					up = down;
+					down = down.next;
+				}
+				if (down == now)
+					t = t.next;
+				else {
+					t.next = now.next;
+					now.next = down;
+					up.next = now;
+				}
+			}
+			now = t.next;
+		}
+		return h;
 	}
 
 	// private methods
