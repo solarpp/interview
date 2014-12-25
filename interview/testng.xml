@@ -5,6 +5,7 @@
     <classes>
       <class name="peng.practice.interview.StackTest"/>
       <class name="peng.practice.interview.LeetCodeTest"/>
+      <class name="peng.practice.interview.AskedTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
