@@ -29,6 +29,7 @@ public class Asked {
 				allwords.put(s, 1);
 			}
 		}
+		
 		//sort result
 		result = new ArrayList<String>(allwords.keySet());
 		Collections.sort(result, new Comparator<Object>() {

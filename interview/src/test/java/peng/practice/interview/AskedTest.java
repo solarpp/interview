@@ -20,7 +20,7 @@ public class AskedTest {
 						   "abc", "def", "ghi", 
 						   "abc", "def", 
 						   "abc", 
-						   "123", "456", "789", "123", "123", "123", "123" };
+						   "q123", "456", "789", "q123", "q123", "q123", "q123" };
 		List<String> expected = new ArrayList<String>();
 		expected.add("abc");
 		expected.add("def");
@@ -28,7 +28,7 @@ public class AskedTest {
 		expected.add("jkl");
 		expected.add("mno");
 		expected.add("pqr");
-		expected.add("123");
+		expected.add("q123");
 		expected.add("stu");
 		expected.add("uwx");
 		expected.add("yz");
