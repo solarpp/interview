@@ -5,74 +5,103 @@ import java.util.List;
 
 public class LeetCode {
 
-	// https://oj.leetcode.com/problems/permutations/
-	public static List<List<Integer>> permute(int[] num) {
-		List<List<Integer>> result = new ArrayList<List<Integer>>();
-		if (num.length == 0)
+	/** https://oj.leetcode.com/problems/permutations/
+	 * List all permutation of input numbers
+	 * @param numbers
+	 * @return permutation list
+	 */
+	public static List<List<Integer>> permute(int[] numbers) {
+		List<List<Integer>> permutedList = new ArrayList<List<Integer>>();
+		
+		//no number in input
+		if (numbers.length == 0)
 			return null;
-		if (num.length == 1) {
-			List<Integer> current = new ArrayList<Integer>();
-			current.add(num[0]);
-			result.add(current);
-			return result;
+		
+		//only one number in input 
+		if (numbers.length == 1) {
+			List<Integer> currentPermutation = new ArrayList<Integer>();
+			currentPermutation.add(numbers[0]);
+			permutedList.add(currentPermutation);
+			return permutedList;
 		}
-		doPermute(result, num, 0);
-		return result;
+		
+		//from index 0 do permute
+		doPermute(permutedList, numbers, 0);
+		return permutedList;
 	}
 
-	// https://oj.leetcode.com/problems/insertion-sort-list/
+	/** https://oj.leetcode.com/problems/insertion-sort-list/
+	 * Do insertion sort on a linked list
+	 * @param head
+	 * @return sorted linked list head
+	 */
 	public static Node insertionSortList(Node head) {
 		if (head == null)
 			return null;
 		if (head.next == null)
 			return head;
-		Node h = head;
-		Node t = head;
-		Node up = head;
-		Node down = head;
-		Node now = head.next;
-		while (now != null) {
-			if (h.value > now.value) {
-				t.next = now.next;
-				now.next = h;
-				h = now;
+		Node sortedHead = head;	//sorted list head
+		Node sortedTail = head; //sorted list tail
+		Node unSortedHead = head.next; //unsorted list head
+		while (unSortedHead != null) {
+			if (sortedHead.value > unSortedHead.value) {
+				//replace sortedHead with unSortedHead since sortedHead has bigger value
+				sortedTail.next = unSortedHead.next;
+				unSortedHead.next = sortedHead;
+				sortedHead = unSortedHead;
 			} else {
-				up = h;
-				down = h;
-				while (down.value < now.value && down != now) {
-					up = down;
-					down = down.next;
+				//find if has node in sorted list which value is bigger than unSortedHead by downTraveler
+				Node upTraveler = sortedHead; //traveler start from sorted list head which next is downTraveler
+				Node downTraveler = sortedHead; //traveler start form sorted list head
+				while (downTraveler.value < unSortedHead.value && downTraveler != unSortedHead) {
+					upTraveler = downTraveler;
+					downTraveler = downTraveler.next;
 				}
-				if (down == now)
-					t = t.next;
+				if (downTraveler == unSortedHead)
+			        //No such node in sorted list which value is bigger than unSortedHead
+					sortedTail = sortedTail.next;
 				else {
-					t.next = now.next;
-					now.next = down;
-					up.next = now;
+					//find such node in sorted list which value is bigger than unSortedHead
+					//so insert unSortedHead between up and down traveler
+					sortedTail.next = unSortedHead.next;
+					unSortedHead.next = downTraveler;
+					upTraveler.next = unSortedHead;
 				}
 			}
-			now = t.next;
+			//unSortedHead should always be sorted tail's next
+			unSortedHead = sortedTail.next;
 		}
-		return h;
+		return sortedHead;
 	}
 
-	// private methods
-	// for problem permutations
-	private static void doPermute(List<List<Integer>> result, int[] num,
-			int start) {
-		int l = num.length;
-		if (start == l) {
-			List<Integer> current = new ArrayList<Integer>();
-			for (int a : num)
-				current.add(a);
-			// if (current.get(0) < 3 && current.get(3) > 2)
-			result.add(current);
+	/// private methods
+	/**
+	 * Recursive call
+	 * @param permutedList
+	 * @param num
+	 * @param start
+	 */
+	private static void doPermute(List<List<Integer>> permutedList, int[] numbers,
+			int startIndex) {
+		int inputNumbersLength = numbers.length;
+		if (startIndex == inputNumbersLength) {
+			//return when reach input numbers length, means got one kind of permutation
+			List<Integer> currentPermutation = new ArrayList<Integer>();
+			for (int number : numbers)
+				currentPermutation.add(number);
+			permutedList.add(currentPermutation);
 			return;
 		} else {
-			for (int i = start; i < l; i++) {
-				swap(num, start, i);
-				doPermute(result, num, start + 1);
-				swap(num, start, i);
+			//recursive call when not reach input numbers length
+			for (int i = startIndex; i < inputNumbersLength; i++) {
+				//swap startIndex with i
+				swap(numbers, startIndex, i);
+				
+				//do recursive call from startIndex + 1
+				doPermute(permutedList, numbers, startIndex + 1);
+				
+				//swap back
+				swap(numbers, startIndex, i);
 			}
 		}
 	}
@@ -83,6 +112,5 @@ public class LeetCode {
 		num[a] = num[b];
 		num[b] = c;
 	}
-	// end - for problem permutations
 
 }
