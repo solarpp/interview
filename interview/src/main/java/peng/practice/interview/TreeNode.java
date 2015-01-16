@@ -2,11 +2,11 @@ package peng.practice.interview;
 
 public class TreeNode {
 	public int value;
-	public Node leftson, rightson;
+	public TreeNode left, right;
 
 	public TreeNode(int value) {
 		this.value = value;
-		leftson = null;
-		rightson = null;
+		this.left = null;
+		this.right = null;
 	}
 }
