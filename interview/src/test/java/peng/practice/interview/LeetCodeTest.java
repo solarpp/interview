@@ -25,7 +25,7 @@ public class LeetCodeTest {
 	public void testInsertionSortList() {
 		// prepare test data
 		Node n1 = new Node(2);
-		Node n2 = new Node(3);
+		Node n2 = new Node(2); //for nodes have same value scenario
 		Node n3 = new Node(4);
 		Node n4 = new Node(1);
 		n1.next = n2;
@@ -37,7 +37,7 @@ public class LeetCodeTest {
 		Node head = LeetCode.insertionSortList(n1);
 		assertEquals(head.value, 1);
 		assertEquals(head.next.value, 2);
-		assertEquals(head.next.next.value, 3);
+		assertEquals(head.next.next.value, 2);
 		assertEquals(head.next.next.next.value, 4);
 	}
 }

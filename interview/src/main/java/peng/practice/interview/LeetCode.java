@@ -53,7 +53,7 @@ public class LeetCode {
 				//find if has node in sorted list which value is bigger than unSortedHead by downTraveler
 				Node upTraveler = sortedHead; //traveler start from sorted list head which next is downTraveler
 				Node downTraveler = sortedHead; //traveler start form sorted list head
-				while (downTraveler.value < unSortedHead.value && downTraveler != unSortedHead) {
+				while (downTraveler.value <= unSortedHead.value && downTraveler != unSortedHead) {
 					upTraveler = downTraveler;
 					downTraveler = downTraveler.next;
 				}
