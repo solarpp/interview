@@ -20,7 +20,7 @@ public class LeetCode {
 	public List<List<Integer>> levelOrder(TreeNode root) {
 		List<List<Integer>> totalLevelOrderList = new ArrayList<List<Integer>>();
 		Queue<TreeNode> treeNodeQueue = new LinkedList<TreeNode>();
-		if (root == null) {
+		if (root != null) {
 			treeNodeQueue.add(root);
 			while (!treeNodeQueue.isEmpty()) {
 				List<Integer> currentLevelOrderList = new ArrayList<Integer>();
