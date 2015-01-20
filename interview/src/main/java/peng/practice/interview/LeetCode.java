@@ -1,11 +1,68 @@
 package peng.practice.interview;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 import javax.print.attribute.standard.OutputDeviceAssigned;
 
 public class LeetCode {
+
+	/**
+	 * https://oj.leetcode.com/problems/binary-tree-level-order-traversal/
+	 * 
+	 * ACCEPTED
+	 * 
+	 * @param root
+	 * @return
+	 */
+	public List<List<Integer>> levelOrder(TreeNode root) {
+		List<List<Integer>> totalLevelOrderList = new ArrayList<List<Integer>>();
+		Queue<TreeNode> treeNodeQueue = new LinkedList<TreeNode>();
+		if (root == null) {
+			treeNodeQueue.add(root);
+			while (!treeNodeQueue.isEmpty()) {
+				List<Integer> currentLevelOrderList = new ArrayList<Integer>();
+				int currentlevelNodesCount = treeNodeQueue.size();
+				for (int i = 0; i < currentlevelNodesCount; i++) {
+					TreeNode currentLevelNode = treeNodeQueue.remove();
+					currentLevelOrderList.add(currentLevelNode.value);
+					if (currentLevelNode.left != null)
+						treeNodeQueue.add(currentLevelNode.left);
+					if (currentLevelNode.right != null)
+						treeNodeQueue.add(currentLevelNode.right);
+				}
+				totalLevelOrderList.add(currentLevelOrderList);
+			}
+		}
+		return totalLevelOrderList;
+	}
+
+	/**
+	 * https://oj.leetcode.com/problems/balanced-binary-tree/
+	 * 
+	 * ACCEPTED (not the best)
+	 * 
+	 * @param root
+	 * @return
+	 */
+	public static boolean isBalanced(TreeNode root) {
+		boolean isBanlanced = false;
+		if (root == null)
+			isBanlanced = true;
+		else {
+			int leftHeight = caculateNodeHeight(root.left);
+			int rightHeight = caculateNodeHeight(root.right);
+			if ((leftHeight > rightHeight ? leftHeight - rightHeight
+					: rightHeight - leftHeight) > 1)
+				isBanlanced = false;
+			else {
+				isBanlanced = isBalanced(root.left) && isBalanced(root.right);
+			}
+		}
+		return isBanlanced;
+	}
 
 	/**
 	 * https://oj.leetcode.com/problems/zigzag-conversion/
@@ -16,7 +73,7 @@ public class LeetCode {
 	 * @param nRows
 	 * @return
 	 */
-	public String convert(String s, int nRows) {
+	public static String convert(String s, int nRows) {
 		String convertedString = null;
 		if (s == null || nRows < 1) {
 			convertedString = null;
@@ -25,15 +82,29 @@ public class LeetCode {
 		} else {
 			StringBuilder convertedStringBuilder = new StringBuilder();
 			int inputStringLength = s.length();
+			// char count for each zigzag
 			int zigzagCount = nRows + nRows - 2;
+			// full char column count for input string
 			int fulllineCount = inputStringLength / zigzagCount + 1;
+			// for each row
 			for (int rowIndex = 0; rowIndex < nRows; rowIndex++) {
+				// for each column
 				for (int lineIndex = 0; lineIndex < fulllineCount; lineIndex++) {
+					// only 2 chars here
+
+					// the first char on the column
 					int index1 = lineIndex * zigzagCount + rowIndex;
+					// the second char is between columns
 					int index2 = lineIndex * zigzagCount + zigzagCount
 							- rowIndex;
+					// make sure the first char index is smaller than input
+					// string length
 					if (index1 < inputStringLength)
 						convertedStringBuilder.append(s.charAt(index1));
+					// make sure the second char is not same with the first char
+					// which happens in the last row
+					// and make sure the second char index is smaller than input
+					// string length
 					if (index2 != index1 && index2 != index1 + zigzagCount
 							&& index2 < inputStringLength)
 						convertedStringBuilder.append(s.charAt(index2));
@@ -214,7 +285,41 @@ public class LeetCode {
 	}
 
 	// / private methods
+
+	// private static void doLevelOrder(List<List<Integer>> levelOrderList,
+	// TreeNode node)
+	// {
+	// Queue<TreeNode> currentLevelNodes = new LinkedList<TreeNode>();
+	// List<Integer> currentLevelOrderList = new ArrayList<Integer>();
+	// if(node.left!=null)
+	// {
+	//
+	// }
+	// }
+
 	/**
+	 * help method for https://oj.leetcode.com/problems/balanced-binary-tree/
+	 * 
+	 * Recursive call
+	 * 
+	 * @param node
+	 * @return
+	 */
+	private static int caculateNodeHeight(TreeNode node) {
+		int height = 0;
+		if (node == null)
+			height = 0;
+		else {
+			int leftHeight = caculateNodeHeight(node.left);
+			int rightHeight = caculateNodeHeight(node.right);
+			height = 1 + (leftHeight > rightHeight ? leftHeight : rightHeight);
+		}
+		return height;
+	}
+
+	/**
+	 * help method for https://oj.leetcode.com/problems/permutations/
+	 * 
 	 * Recursive call
 	 * 
 	 * @param permutedList
