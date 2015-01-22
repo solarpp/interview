@@ -5,9 +5,118 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-import javax.print.attribute.standard.OutputDeviceAssigned;
-
 public class LeetCode {
+
+	/**
+	 * https://oj.leetcode.com/problems/count-and-say/
+	 * 
+	 * ACCEPTED
+	 * 
+	 * @param n
+	 * @return
+	 */
+	public static String countAndSay(int n) {
+		String result = null;
+		if (n > 0) {
+			if (n == 1)
+				result = "1";
+			else {
+				result = doCountAndSay(countAndSay(n - 1));
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * https://oj.leetcode.com/problems/compare-version-numbers/
+	 * 
+	 * ACCEPTED
+	 * 
+	 * @param version1
+	 * @param version2
+	 * @return
+	 */
+	public static int compareVersion(String version1, String version2) {
+		int comparationResult = -2;
+		int version1Length = version1.length();
+		int version2Length = version2.length();
+		int beginIndex1 = 0;
+		int endIndex1 = 0;
+		int beginIndex2 = 0;
+		int endIndex2 = 0;
+		int version1Number = 0;
+		int version2Number = 0;
+		while (comparationResult == -2) {
+			if (endIndex1 == version1Length)
+				version1Number = 0;
+			else {
+				while (endIndex1 < version1Length
+						&& version1.charAt(endIndex1) != '.')
+					endIndex1++;
+				version1Number = Integer.parseInt(version1.substring(
+						beginIndex1, endIndex1));
+			}
+
+			if (endIndex2 == version2Length)
+				version2Number = 0;
+			else {
+				while (endIndex2 < version2Length
+						&& version2.charAt(endIndex2) != '.')
+					endIndex2++;
+				version2Number = Integer.parseInt(version2.substring(
+						beginIndex2, endIndex2));
+			}
+
+			if (version1Number > version2Number) {
+				comparationResult = 1;
+			} else if (version1Number < version2Number) {
+				comparationResult = -1;
+			} else {
+				if (endIndex1 != version1Length) {
+					endIndex1 += 1;
+					beginIndex1 = endIndex1;
+				}
+				if (endIndex2 != version2Length) {
+					endIndex2 += 1;
+					beginIndex2 = endIndex2;
+				}
+				if (endIndex1 == version1Length && endIndex2 == version2Length)
+					comparationResult = 0;
+			}
+		}
+
+		return comparationResult;
+	}
+
+	/**
+	 * https://oj.leetcode.com/problems/binary-tree-level-order-traversal-ii/
+	 * 
+	 * ACCEPTED
+	 * 
+	 * @param root
+	 * @return
+	 */
+	public static List<List<Integer>> levelOrderBottom(TreeNode root) {
+		List<List<Integer>> totalLevelOrderList = new ArrayList<List<Integer>>();
+		Queue<TreeNode> treeNodeQueue = new LinkedList<TreeNode>();
+		if (root != null) {
+			treeNodeQueue.add(root);
+			while (!treeNodeQueue.isEmpty()) {
+				List<Integer> currentLevelOrderList = new ArrayList<Integer>();
+				int currentlevelNodesCount = treeNodeQueue.size();
+				for (int i = 0; i < currentlevelNodesCount; i++) {
+					TreeNode currentLevelNode = treeNodeQueue.remove();
+					currentLevelOrderList.add(currentLevelNode.value);
+					if (currentLevelNode.left != null)
+						treeNodeQueue.add(currentLevelNode.left);
+					if (currentLevelNode.right != null)
+						treeNodeQueue.add(currentLevelNode.right);
+				}
+				totalLevelOrderList.add(0, currentLevelOrderList);
+			}
+		}
+		return totalLevelOrderList;
+	}
 
 	/**
 	 * https://oj.leetcode.com/problems/binary-tree-level-order-traversal/
@@ -17,7 +126,7 @@ public class LeetCode {
 	 * @param root
 	 * @return
 	 */
-	public List<List<Integer>> levelOrder(TreeNode root) {
+	public static List<List<Integer>> levelOrder(TreeNode root) {
 		List<List<Integer>> totalLevelOrderList = new ArrayList<List<Integer>>();
 		Queue<TreeNode> treeNodeQueue = new LinkedList<TreeNode>();
 		if (root != null) {
@@ -286,16 +395,34 @@ public class LeetCode {
 
 	// / private methods
 
-	// private static void doLevelOrder(List<List<Integer>> levelOrderList,
-	// TreeNode node)
-	// {
-	// Queue<TreeNode> currentLevelNodes = new LinkedList<TreeNode>();
-	// List<Integer> currentLevelOrderList = new ArrayList<Integer>();
-	// if(node.left!=null)
-	// {
-	//
-	// }
-	// }
+	/**
+	 * help method for https://oj.leetcode.com/problems/count-and-say/
+	 * 
+	 * @param s
+	 * @return
+	 */
+	private static String doCountAndSay(String s) {
+		StringBuilder result = new StringBuilder();
+		int count = 0;
+		if (s != null) {
+			char currentChar = s.charAt(0);
+			for (int i = 0; i < s.length(); i++) {
+				if (s.charAt(i) != currentChar) {
+					result.append(count);
+					result.append(currentChar);
+					count = 1;
+				} else {
+					count++;
+				}
+				currentChar = s.charAt(i);
+			}
+			if(count > 0) {
+				result.append(count);
+				result.append(currentChar);
+			}
+		}
+		return result.toString();
+	}
 
 	/**
 	 * help method for https://oj.leetcode.com/problems/balanced-binary-tree/

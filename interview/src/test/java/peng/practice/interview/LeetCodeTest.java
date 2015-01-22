@@ -6,6 +6,14 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 
 public class LeetCodeTest {
+	
+	
+	@Test
+	public void testCompareVersion() {
+		String version1 = "1";
+		String version2 = "0";
+		assertEquals(LeetCode.compareVersion(version1, version2), 1);
+	}
 
 	@Test
 	public void testPermute() {
