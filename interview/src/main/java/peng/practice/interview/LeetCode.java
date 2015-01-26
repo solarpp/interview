@@ -8,6 +8,20 @@ import java.util.Queue;
 public class LeetCode {
 
 	/**
+	 * https://oj.leetcode.com/problems/valid-sudoku/
+	 * 
+	 * ACCEPTED
+	 * 
+	 * @param board
+	 * @return
+	 */
+	public static boolean isValidSudoku(char[][] board) {
+		boolean isValidRowsAndColumns = doValidateSudokuRowsAndColumns(board);
+		boolean isValidBlocks = doValidateSudokuBlocks(board);
+		return isValidRowsAndColumns & isValidBlocks;
+	}
+
+	/**
 	 * https://oj.leetcode.com/problems/count-and-say/
 	 * 
 	 * ACCEPTED
@@ -396,6 +410,83 @@ public class LeetCode {
 	// / private methods
 
 	/**
+	 * help method for https://oj.leetcode.com/problems/valid-sudoku/
+	 * 
+	 * @param board
+	 * @return
+	 */
+	private static boolean doValidateSudokuBlocks(char[][] board) {
+		boolean isValidBlocks = true;
+		int row = 0;
+		int column = 0;
+		for (int rowId = 0; rowId < 3; rowId++)
+			for (int columnId = 0; columnId < 3; columnId++) {
+				int currentRowStart = row + rowId * 3;
+				int currentColumnStart = column + columnId * 3;
+				char[] currentBlock = new char[9];
+				for (int i = 0; i < 3; i++)
+					for (int j = 0; j < 3; j++) {
+						currentBlock[i * 3 + j] = board[currentRowStart + i][currentColumnStart
+								+ j];
+					}
+				isValidBlocks &= doValidateSudokuWithNineChars(currentBlock);
+				if (!isValidBlocks)
+					return isValidBlocks;
+			}
+		return isValidBlocks;
+	}
+
+	/**
+	 * help method for https://oj.leetcode.com/problems/valid-sudoku/
+	 * 
+	 * @param board
+	 * @return
+	 */
+	private static boolean doValidateSudokuRowsAndColumns(char[][] board) {
+		boolean isValidRowsAndColumns = true;
+		for (int i = 0; i < 9; i++) {
+			char[] columns = board[i];
+			isValidRowsAndColumns &= doValidateSudokuWithNineChars(columns);
+		}
+		if (!isValidRowsAndColumns)
+			return isValidRowsAndColumns;
+		else {
+			char[][] transposedBoard = new char[board.length][board.length];
+			for (int i = 0; i < 9; i++)
+				for (int j = 0; j < 9; j++)
+					transposedBoard[i][j] = board[j][i];
+			for (int i = 0; i < 9; i++) {
+				char[] rows = transposedBoard[i];
+				isValidRowsAndColumns &= doValidateSudokuWithNineChars(rows);
+			}
+			return isValidRowsAndColumns;
+		}
+	}
+
+	/**
+	 * help method for https://oj.leetcode.com/problems/valid-sudoku/
+	 * 
+	 * @param nineChars
+	 * @return
+	 */
+	private static boolean doValidateSudokuWithNineChars(char[] nineChars) {
+		boolean isValidNineChars = true;
+		int[] numbers = new int[10];
+		for (char c : nineChars) {
+			int charDiffWithZero = c - '0';
+			if (1 <= charDiffWithZero && charDiffWithZero <= 9) {
+				if (numbers[charDiffWithZero] == 0) {
+					numbers[charDiffWithZero]++;
+				} else {
+					isValidNineChars = false;
+					break;
+				}
+			}
+		}
+		return isValidNineChars;
+	}
+
+	/**
 	 * help method for https://oj.leetcode.com/problems/count-and-say/
 	 * 
 	 * @param s
@@ -416,7 +507,7 @@ public class LeetCode {
 				}
 				currentChar = s.charAt(i);
 			}
-			if(count > 0) {
+			if (count > 0) {
 				result.append(count);
 				result.append(currentChar);
 			}
