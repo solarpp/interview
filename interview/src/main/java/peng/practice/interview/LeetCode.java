@@ -4,8 +4,50 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Stack;
 
 public class LeetCode {
+
+	/**
+	 * https://oj.leetcode.com/problems/valid-parentheses/
+	 * 
+	 * ACCEPTED
+	 * 
+	 * @param s
+	 * @return
+	 */
+	public static boolean isValid(String s) {
+		boolean isValid = false;
+		if (s != null && s.length() % 2 == 0) {
+			isValid = true;
+			String openBrackets = "({[";
+			String closeBrackets = ")}]";
+			Stack<Character> stack = new Stack<Character>();
+			for (char c : s.toCharArray()) {
+				if (openBrackets.indexOf(c) >= 0) {
+					stack.push(c);
+				} else if (closeBrackets.indexOf(c) >= 0) {
+					if (stack.empty()) {
+						isValid = false;
+						break;
+					} else {
+						char mappingOpenBracket = stack.pop();
+						if (openBrackets.indexOf(mappingOpenBracket) != closeBrackets
+								.indexOf(c)) {
+							isValid = false;
+							break;
+						}
+					}
+				} else {
+					isValid = false;
+					break;
+				}
+			}
+			if (isValid && !stack.empty())
+				isValid = false;
+		}
+		return isValid;
+	}
 
 	/**
 	 * https://oj.leetcode.com/problems/valid-sudoku/

@@ -7,6 +7,11 @@ import static org.testng.Assert.assertEquals;
 
 public class LeetCodeTest {
 	
+	@Test 
+	public void testIsValid() {
+		String s = "()";
+		assertEquals(LeetCode.isValid(s), true);
+	}
 	
 	@Test
 	public void testCompareVersion() {
