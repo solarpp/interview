@@ -7,6 +7,52 @@ import java.util.Queue;
 import java.util.Stack;
 
 public class LeetCode {
+	
+	/**
+	 * https://oj.leetcode.com/problems/valid-palindrome/
+	 * 
+	 * ACCEPTED
+	 * 
+	 * @param s
+	 * @return
+	 */
+    public boolean isPalindrome(String s) {
+        boolean isPalindrome = false;
+        if(s != null) {
+        	int length = s.length();
+        	if(length == 0 || length == 1) {
+        		isPalindrome = true;
+        	} else {
+				int fromHeadIndex = 0;
+				int fromEndIndex = length - 1;
+				char fromHeadChar = '\u0000';
+				char fromEndChar = '\u0000';
+				while(fromHeadIndex <= fromEndIndex)
+				{
+					if(fromHeadChar == '\u0000' && !Character.isLetterOrDigit(s.charAt(fromHeadIndex))) {
+						fromHeadIndex++;
+					} else {
+						fromHeadChar = s.charAt(fromHeadIndex);
+						if(fromEndChar == '\u0000' && !Character.isLetterOrDigit(s.charAt(fromEndIndex))) {
+							fromEndIndex--;
+						} else {
+							fromEndChar = s.charAt(fromEndIndex);
+							if(Character.toLowerCase(fromHeadChar) != Character.toLowerCase(fromEndChar)) {
+								isPalindrome = false;
+								break;
+							} else {
+								fromHeadIndex++;
+								fromEndIndex--;
+							}
+						}
+					}
+				}
+				if(fromHeadIndex > fromEndIndex)
+					isPalindrome = true;
+			}
+        }
+        return isPalindrome;
+    }
 
 	/**
 	 * https://oj.leetcode.com/problems/valid-parentheses/
