@@ -7,7 +7,36 @@ import java.util.Queue;
 import java.util.Stack;
 
 public class LeetCode {
-	
+
+	/**
+	 * https://oj.leetcode.com/problems/excel-sheet-column-title/
+	 * 
+	 * ACCEPTED
+	 * 
+	 * @param n
+	 * @return
+	 */
+	public String convertToTitle(int n) {
+		String result = null;
+		if (n > 0) {
+			StringBuilder buffer = new StringBuilder();
+			int modeValue = n;
+			while (n > 26) {
+				modeValue = n % 26;
+				if (modeValue == 0) {
+					buffer.insert(0, Character.toChars(64 + 26));
+					n = n / 26 - 1;
+				} else {
+					buffer.insert(0, Character.toChars(modeValue + 64));
+					n /= 26;
+				}
+			}
+			buffer.insert(0, Character.toChars(n + 64));
+			result = buffer.toString();
+		}
+		return result;
+	}
+
 	/**
 	 * https://oj.leetcode.com/problems/valid-palindrome/
 	 * 
@@ -16,28 +45,32 @@ public class LeetCode {
 	 * @param s
 	 * @return
 	 */
-    public boolean isPalindrome(String s) {
-        boolean isPalindrome = false;
-        if(s != null) {
-        	int length = s.length();
-        	if(length == 0 || length == 1) {
-        		isPalindrome = true;
-        	} else {
+	public boolean isPalindrome(String s) {
+		boolean isPalindrome = false;
+		if (s != null) {
+			int length = s.length();
+			if (length == 0 || length == 1) {
+				isPalindrome = true;
+			} else {
 				int fromHeadIndex = 0;
 				int fromEndIndex = length - 1;
 				char fromHeadChar = '\u0000';
 				char fromEndChar = '\u0000';
-				while(fromHeadIndex <= fromEndIndex)
-				{
-					if(fromHeadChar == '\u0000' && !Character.isLetterOrDigit(s.charAt(fromHeadIndex))) {
+				while (fromHeadIndex <= fromEndIndex) {
+					if (fromHeadChar == '\u0000'
+							&& !Character.isLetterOrDigit(s
+									.charAt(fromHeadIndex))) {
 						fromHeadIndex++;
 					} else {
 						fromHeadChar = s.charAt(fromHeadIndex);
-						if(fromEndChar == '\u0000' && !Character.isLetterOrDigit(s.charAt(fromEndIndex))) {
+						if (fromEndChar == '\u0000'
+								&& !Character.isLetterOrDigit(s
+										.charAt(fromEndIndex))) {
 							fromEndIndex--;
 						} else {
 							fromEndChar = s.charAt(fromEndIndex);
-							if(Character.toLowerCase(fromHeadChar) != Character.toLowerCase(fromEndChar)) {
+							if (Character.toLowerCase(fromHeadChar) != Character
+									.toLowerCase(fromEndChar)) {
 								isPalindrome = false;
 								break;
 							} else {
@@ -47,12 +80,12 @@ public class LeetCode {
 						}
 					}
 				}
-				if(fromHeadIndex > fromEndIndex)
+				if (fromHeadIndex > fromEndIndex)
 					isPalindrome = true;
 			}
-        }
-        return isPalindrome;
-    }
+		}
+		return isPalindrome;
+	}
 
 	/**
 	 * https://oj.leetcode.com/problems/valid-parentheses/
