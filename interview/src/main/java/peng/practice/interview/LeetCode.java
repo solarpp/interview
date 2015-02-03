@@ -9,6 +9,30 @@ import java.util.Stack;
 public class LeetCode {
 
 	/**
+	 * https://oj.leetcode.com/problems/excel-sheet-column-number/
+	 * 
+	 * ACCEPTED
+	 * 
+	 * @param s
+	 * @return
+	 */
+	public int titleToNumber(String s) {
+		int result = 0;
+		if (s != null) {
+			int length = s.length();
+			for (int digital = length - 1; digital >= 0; digital--) {
+				int digitalBit = 1;
+				for (int bit = 1; bit < length - digital; bit++) {
+					digitalBit *= 26;
+				}
+				char currentChar = s.charAt(digital);
+				result += (currentChar - 'A' + 1) * digitalBit;
+			}
+		}
+		return result;
+	}
+
+	/**
 	 * https://oj.leetcode.com/problems/excel-sheet-column-title/
 	 * 
 	 * ACCEPTED
