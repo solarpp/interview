@@ -9,6 +9,64 @@ import java.util.Stack;
 public class LeetCode {
 
 	/**
+	 * https://oj.leetcode.com/problems/implement-strstr/
+	 * 
+	 * ACCEPTED
+	 * 
+	 * @param haystack
+	 * @param needle
+	 * @return
+	 */
+	public int strStr(String haystack, String needle) {
+		int result = -1;
+		if (haystack != null && needle != null
+				&& haystack.length() >= needle.length()) {
+			if (needle.length() == 0) {
+				result = 0;
+			} else {
+				int startIndexOfHaystack = 0;
+				while (startIndexOfHaystack <= haystack.length()
+						- needle.length()) {
+					int comparedLength = 0;
+					while (startIndexOfHaystack + comparedLength < haystack
+							.length()
+							&& comparedLength < needle.length()
+							&& haystack.charAt(startIndexOfHaystack
+									+ comparedLength) == needle
+									.charAt(comparedLength)) {
+						comparedLength++;
+						if (comparedLength == needle.length()) {
+							result = startIndexOfHaystack;
+							break;
+						}
+					}
+					if (result != -1)
+						break;
+					startIndexOfHaystack++;
+				}
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * https://oj.leetcode.com/problems/factorial-trailing-zeroes/
+	 * 
+	 * ACCEPTED
+	 * 
+	 * @param n
+	 * @return
+	 */
+	public int trailingZeroes(int n) {
+		int result = 0;
+		if (n >= 5) {
+			result += n / 5;
+			result += trailingZeroes(n / 5);
+		}
+		return result;
+	}
+
+	/**
 	 * https://oj.leetcode.com/problems/excel-sheet-column-number/
 	 * 
 	 * ACCEPTED
