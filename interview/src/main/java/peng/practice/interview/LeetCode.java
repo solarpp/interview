@@ -9,6 +9,54 @@ import java.util.Stack;
 public class LeetCode {
 
 	/**
+	 * https://oj.leetcode.com/problems/intersection-of-two-linked-lists/
+	 * 
+	 * ACCEPTED
+	 * 
+	 * @param headA
+	 * @param headB
+	 * @return
+	 */
+	public Node getIntersectionNode(Node headA, Node headB) {
+		Node result = null;
+		if (headA != null && headB != null) {
+			Node travelerNodeA = headA;
+			Node travelerNodeB = headB;
+			int lengthA = 1, lengthB = 1;
+			while (travelerNodeA.next != null) {
+				lengthA++;
+				travelerNodeA = travelerNodeA.next;
+			}
+			while (travelerNodeB.next != null) {
+				lengthB++;
+				travelerNodeB = travelerNodeB.next;
+			}
+			travelerNodeA = headA;
+			travelerNodeB = headB;
+			if(lengthA > lengthB) {
+				int lengthDiff = lengthA - lengthB;
+				while(lengthDiff > 0) {
+					travelerNodeA = travelerNodeA.next;
+					lengthDiff--;
+				}
+			} else if (lengthB > lengthA) {
+				int lengthDiff = lengthB - lengthA;
+				while(lengthDiff > 0) {
+					travelerNodeB = travelerNodeB.next;
+					lengthDiff--;
+				}
+			}
+			while(travelerNodeA != travelerNodeB && travelerNodeA != null)
+			{
+				travelerNodeA = travelerNodeA.next;
+				travelerNodeB = travelerNodeB.next;
+			}
+			result = travelerNodeA;
+		}
+		return result;
+	}
+
+	/**
 	 * https://oj.leetcode.com/problems/implement-strstr/
 	 * 
 	 * ACCEPTED
