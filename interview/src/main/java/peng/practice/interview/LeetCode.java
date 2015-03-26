@@ -9,6 +9,74 @@ import java.util.Stack;
 public class LeetCode {
 
 	/**
+	 * https://leetcode.com/problems/longest-common-prefix/
+	 * 
+	 * ACCEPTED
+	 * 
+	 * 
+	 * @param strs
+	 * @return
+	 */
+	public String longestCommonPrefix(String[] strs) {
+		StringBuilder result = new StringBuilder("");
+		if (strs != null && strs.length >= 1) {
+			// strs is not null and strs at least has 2 strings.
+			String theFirstString = strs[0];
+			if (strs.length == 1) {
+				// strs only has 1 string
+				result.append(strs[0]);
+			} else {
+				// strs has more than 1 string
+				for (int i = 0; i < theFirstString.length(); i++) {
+					boolean isSame = true;
+					for (String string : strs) {
+						if (string.length() <= i
+								|| string.charAt(i) != theFirstString.charAt(i))
+							// found a string length shorter than theFirstString
+							// or
+							// found a string is not same with theFirstString at
+							// index i
+							isSame = false;
+					}
+					if (isSame) {
+						// all strings are same between index 0 to index i;
+						result.append(theFirstString.charAt(i));
+					} else {
+						// all strings are same between index 0 to index i-1
+						// but different at index i
+						break;
+					}
+				}
+			}
+		}
+		return result.toString();
+	}
+
+	/**
+	 * https://oj.leetcode.com/problems/length-of-last-word/
+	 * 
+	 * ACCEPTED
+	 * 
+	 * @param s
+	 * @return
+	 */
+	public int lengthOfLastWord(String s) {
+		int result = 0;
+		if (s != null) {
+			int length = s.length();
+			for (int i = length - 1; i >= 0; i--) {
+				if (s.charAt(i) != ' ') {
+					result++;
+				} else {
+					if (result > 0)
+						break;
+				}
+			}
+		}
+		return result;
+	}
+
+	/**
 	 * https://oj.leetcode.com/problems/intersection-of-two-linked-lists/
 	 * 
 	 * ACCEPTED
@@ -33,21 +101,20 @@ public class LeetCode {
 			}
 			travelerNodeA = headA;
 			travelerNodeB = headB;
-			if(lengthA > lengthB) {
+			if (lengthA > lengthB) {
 				int lengthDiff = lengthA - lengthB;
-				while(lengthDiff > 0) {
+				while (lengthDiff > 0) {
 					travelerNodeA = travelerNodeA.next;
 					lengthDiff--;
 				}
 			} else if (lengthB > lengthA) {
 				int lengthDiff = lengthB - lengthA;
-				while(lengthDiff > 0) {
+				while (lengthDiff > 0) {
 					travelerNodeB = travelerNodeB.next;
 					lengthDiff--;
 				}
 			}
-			while(travelerNodeA != travelerNodeB && travelerNodeA != null)
-			{
+			while (travelerNodeA != travelerNodeB && travelerNodeA != null) {
 				travelerNodeA = travelerNodeA.next;
 				travelerNodeB = travelerNodeB.next;
 			}
@@ -658,7 +725,9 @@ public class LeetCode {
 		return sortedHead;
 	}
 
-	// / private methods
+	// ///////////////////////////////////////////////////////////////////
+	// private methods
+	// ///////////////////////////////////////////////////////////////////
 
 	/**
 	 * help method for https://oj.leetcode.com/problems/valid-sudoku/
